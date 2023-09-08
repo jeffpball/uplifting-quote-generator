@@ -18,11 +18,17 @@
       "function": {
         "upliftingquoteLamba": {
           "deploymentBucketName": "amplify-upliftingquotegenera-dev-72303-deployment",
-          "s3Key": "amplify-builds/upliftingquoteLamba-636e6f366f7841365449-build.zip"
+          "s3Key": "amplify-builds/upliftingquoteLamba-494a6b556878512b7070-build.zip"
         }
       },
       "api": {
         "upliftingquotegenera": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "dez56dqq360io",
+          "type": "cicd"
+        }
       }
     }
   }
