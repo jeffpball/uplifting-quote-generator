@@ -16,7 +16,7 @@ interface QuoteGeneratorModalProps {
     setQuoteReceived: React.Dispatch<React.SetStateAction<String | null>>;
 }
 
-const styles = {
+const style = {
 
 };
 
@@ -26,17 +26,18 @@ const QuoteGeneratorModal = ({
     processingQuote,
     setProcessingQuote,
     quoteReceived,
-    setQuoteReceived
+    setQuoteReceived,
 }: QuoteGeneratorModalProps) => {
-    const wiseDevQuote = '"Learning is like sand falling in an hour glass. Knowledge piles up over time and with it you can build sand castles."';
-    const wiseDevQuoteAuthor = "- a wise software engineer";
+
+    const wiseDevQuote = '"If you can center a div, anything is possible."';
+    const wiseDevQuoteAuthor = "- a wise senior software engineer";
 
     const [blobUrl, setBlobUrl] = useState<string | null>(null);
 
     // Function: Handling the download of quote card
     const handleDownload = () => {
         const link = document.createElement('a');
-        if(typeof blobUrl === 'string') {
+        if (typeof blobUrl === 'string') {
             link.href = blobUrl;
             link.download = 'quote.png';
             link.click();
@@ -45,7 +46,7 @@ const QuoteGeneratorModal = ({
 
     // Function: Handle the receiving of quote card
     useEffect(() => {
-        if(quoteReceived) {
+        if (quoteReceived) {
             const binaryData = Buffer.from(quoteReceived, 'base64');
             const blob = new Blob([binaryData], { type: 'image/png' });
             const blobUrlGenerated = URL.createObjectURL(blob);
@@ -72,9 +73,10 @@ const QuoteGeneratorModal = ({
             }}
         >
             <Fade in={open}>
-            <QuoteGeneratorModalCon sx={styles}>
+                <QuoteGeneratorModalCon sx={style}>
                     <QuoteGeneratorModalInnerCon>
-                        {(processingQuote === true && quoteReceived === null) && 
+                        {/* State #1: Processing request of quote + quote state is empty */}
+                        {(processingQuote === true && quoteReceived === null) &&
                             <>
                                 <ModalCircularProgress
                                     size={"8rem"}
@@ -83,20 +85,22 @@ const QuoteGeneratorModal = ({
                                 <QuoteGeneratorTitle>
                                     Creating your quote...
                                 </QuoteGeneratorTitle>
-                                <QuoteGeneratorSubTitle style={{marginTop:"20px"}}>
+                                <QuoteGeneratorSubTitle style={{marginTop: "20px"}}>
                                     {wiseDevQuote}
                                     <br></br>
-                                    <span style={{fontSize:26}}>{wiseDevQuoteAuthor}</span>
+                                    <span style={{fontSize: 26}}>{wiseDevQuoteAuthor}</span>
                                 </QuoteGeneratorSubTitle>
                             </>
-                        }
-                        {quoteReceived === null &&
+                         }
+
+                        {/* State #2: Quote state fulfilled */}
+                        {quoteReceived !== null && 
                             <>
                                 <QuoteGeneratorTitle>
                                     Download your quote!
                                 </QuoteGeneratorTitle>
-                                <QuoteGeneratorSubTitle style={{marginTop:"20px"}}>
-                                    See preview:
+                                <QuoteGeneratorSubTitle style={{marginTop: "20px"}}>
+                                    See a preview:
                                 </QuoteGeneratorSubTitle>
                                 <ImageBlobCon>
                                     <ImageBlob
@@ -109,8 +113,11 @@ const QuoteGeneratorModal = ({
                                 />
                             </>
                         }
+
+
                     </QuoteGeneratorModalInnerCon>
-            </QuoteGeneratorModalCon>
+                </QuoteGeneratorModalCon>
+
             </Fade>
 
         </Modal>

@@ -18,7 +18,7 @@
       "function": {
         "upliftingquoteLamba": {
           "deploymentBucketName": "amplify-upliftingquotegenera-dev-72303-deployment",
-          "s3Key": "amplify-builds/upliftingquoteLamba-45726c57387637484e6f-build.zip"
+          "s3Key": "amplify-builds/upliftingquoteLamba-636e6f366f7841365449-build.zip"
         }
       },
       "api": {

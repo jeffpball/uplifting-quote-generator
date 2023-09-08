@@ -43,6 +43,15 @@
   "function": {
     "upliftingquoteLamba": {
       "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput"
+          ],
+          "category": "api",
+          "resourceName": "upliftingquotegenera"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }

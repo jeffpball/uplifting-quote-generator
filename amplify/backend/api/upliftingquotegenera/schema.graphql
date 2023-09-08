@@ -26,3 +26,5 @@ type QuoteAppData
     createdAt: String!
     updatedAt: String!
   }
+
+  
